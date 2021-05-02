@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Data", "Recipes.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Service", "Recipes.Service\Recipes.Service.csproj", "{A57B746B-6A8A-4BFD-B22D-F3FFD78F0188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.Repository", "Recipes.Repository\Recipes.Repository.csproj", "{47F69DDA-14F6-4C91-B279-22BF843186F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Repository", "Recipes.Repository\Recipes.Repository.csproj", "{47F69DDA-14F6-4C91-B279-22BF843186F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.MVC", "Recipes.MVC\Recipes.MVC.csproj", "{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{47F69DDA-14F6-4C91-B279-22BF843186F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47F69DDA-14F6-4C91-B279-22BF843186F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47F69DDA-14F6-4C91-B279-22BF843186F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

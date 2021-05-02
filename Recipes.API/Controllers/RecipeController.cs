@@ -39,7 +39,6 @@ namespace Recipes.API.Controllers
             return Ok(CategoriesDtoWithCount);
         }
 
-
         [HttpGet]
         [Route("/Service/Recipe/All")]
         public IActionResult RecipeAllAsync()
@@ -58,9 +57,9 @@ namespace Recipes.API.Controllers
             return Ok(recipe);
         }
 
+        [ValidationFilter]
         [HttpPost]
         [Route("/Service/Recipe/All")]
-
         public async Task<IActionResult> SaveAsync([FromBody]RecipesDto recipeDto)
         {
             var result=await _recipeService.AddRecipe(recipeDto);
