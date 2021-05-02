@@ -7,12 +7,9 @@ namespace Recipes.Data.DTOs
 {
     public class IngredientDto
     {
-        public IngredientDto()
-        {
-            Amount = new List<string>();
-        }
+
         public string IngredientName { get; set; }
 
-        public virtual List<string> Amount { get; set; }
+        public AmountDto Amount { get; set; }
     }
 }

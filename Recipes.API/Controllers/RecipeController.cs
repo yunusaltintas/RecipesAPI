@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using Recipes.API.Filters;
 using Recipes.Data.DTOs;
 using Recipes.Data.Entities;
 using Recipes.Service.IServices;
@@ -18,12 +20,14 @@ namespace Recipes.API.Controllers
         private readonly IMapper _mapper;
         private readonly IRecipeService _recipeService;
         private readonly ICategoryService _categoryService;
+        private readonly ILogger<RecipeController> _logger;
 
-        public RecipeController(IMapper mapper, IRecipeService recipeService, ICategoryService categoryService)
+        public RecipeController(IMapper mapper, IRecipeService recipeService, ICategoryService categoryService,ILogger<RecipeController> logger)
         {
             _mapper = mapper;
             _recipeService = recipeService;
             _categoryService = categoryService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -45,8 +49,18 @@ namespace Recipes.API.Controllers
             return Ok(recipe);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
+        [HttpGet]
+        [Route("/Service/Recipe/All/{id}")]
+        public IActionResult RecipeByIdAsync(int id)
+        {
+            var recipe = _recipeService.GetRecipeById(id);
+            return Ok(recipe);
+        }
+
         [HttpPost]
         [Route("/Service/Recipe/All")]
+
         public async Task<IActionResult> SaveAsync([FromBody]RecipesDto recipeDto)
         {
             var result=await _recipeService.AddRecipe(recipeDto);
@@ -56,11 +70,11 @@ namespace Recipes.API.Controllers
 
         [HttpPut]
         [Route("/Service/Recipe/All")]
-        public IActionResult Update(RecipesDto recipeDto)
+        public IActionResult Update(RecipeDto recipeDto)
         {
+            var result = _recipeService.UpdateRecipe(recipeDto);
 
-
-            return Ok();
+            return Ok(result);
         }
 
     }

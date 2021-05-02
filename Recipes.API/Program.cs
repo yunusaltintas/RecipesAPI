@@ -18,6 +18,12 @@ namespace Recipes.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+
+             .ConfigureLogging((context, logging) => {
+                 logging.ClearProviders();
+                 logging.AddFile(context.Configuration["LogPath"].ToString());
+             })
+
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

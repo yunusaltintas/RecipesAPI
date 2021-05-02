@@ -132,3 +132,11 @@ C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\obj\Debug\net5.0\Recipes
 C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\obj\Debug\net5.0\ref\Recipes.API.dll
 C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\obj\Debug\net5.0\Recipes.API.pdb
 C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\obj\Debug\net5.0\Recipes.API.genruntimeconfig.cache
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Extensions.Logging.File.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Sinks.Async.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Sinks.File.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\Serilog.Sinks.RollingFile.dll
+C:\Users\yunus\source\repos\GİT\RecipesAPI\Recipes.API\bin\Debug\net5.0\FluentValidation.dll

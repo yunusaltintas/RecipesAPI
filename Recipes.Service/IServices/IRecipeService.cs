@@ -9,7 +9,9 @@ namespace Recipes.Service.IServices
 {
     public interface IRecipeService : IBaseService<Recipe>
     {
-        RecipesDto GetAllRepice();
+        List<RecipeDto> GetAllRepice();
         Task<Recipe> AddRecipe(RecipesDto recipeDto);
+        RecipeDto GetRecipeById(int id);
+        Recipe UpdateRecipe(RecipeDto recipeDto);
     }
 }

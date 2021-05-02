@@ -18,6 +18,8 @@ using Recipes.Repository.Repositories;
 using Recipes.Service.UnitOfWorks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Recipes.API.Filters;
+using Recipes.API.Extensions;
 
 namespace Recipes.API
 {
@@ -33,29 +35,37 @@ namespace Recipes.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(o=>
+            {
+                o.Filters.Add(new ValidationFilter());
+            });
             services.AddMvc(option => option.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddLogging();
 
             services.AddDbContext<RepiceDbContext>(p => p.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<NotFoundFilter>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            #region RepositoryDI
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IAmountRepository, AmountRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<IDirectionRepository, DirectionRepository>();
-
+            #endregion
+            #region ServiceDI
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<IAmountService, AmountService>();
             services.AddScoped<IIngredientService, IngredientService>();
             services.AddScoped<IDirectionService, DirectionService>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +75,8 @@ namespace Recipes.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCustomException();
 
             app.UseRouting();
 

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YIZ6yniD4mUzB0blcdOh77b6EJZUGP5wWw1r2GGOfphZz5UA48oWEaq6FWerz8kP+bL2KUCljxBA+pbk1G644g==",
+  "dgSpecHash": "nCkW2iwBu74KsRa64PA3JpEinOlqgVT43snhapULo9bmdOQJnBt5zk0eLxRohrLehjDq645wFgbnX1LOwFez1w==",
   "success": true,
   "projectFilePath": "C:\\Users\\yunus\\source\\repos\\GİT\\RecipesAPI\\Recipes.Data\\Recipes.Data.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yunus\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

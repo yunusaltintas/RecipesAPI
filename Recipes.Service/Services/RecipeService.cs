@@ -18,7 +18,7 @@ namespace Recipes.Service.Services
         {
         }
 
-        public RecipesDto GetAllRepice()
+        public List<RecipeDto> GetAllRepice()
         {
             RecipesDto recipeDto = new RecipesDto();
 
@@ -28,21 +28,63 @@ namespace Recipes.Service.Services
             recipeDto.Result = result.Count();
             recipeDto.Total = result.Count();
 
-            recipeDto.Recipe = result.Where(x => x.Id == 1).FirstOrDefault();
 
-            //var query = (from Recipe in result
-            //             select new RecipeDto()
-            //             {
-            //                 Title = Recipe.Title,
-            //                 Category = from x in Recipe.Category
-            //                            select new CategoryDto(
-            //                            {
-            //                                CategoryName = x.CategoryName
-            //                            }).ToList();
+            var query = (from recipe in result
+                         select new RecipeDto()
+                         {
+                             Title = recipe.Title,
+                             Categories = (from category in recipe.Category
+                                           select new CategoryDto()
+                                           {
+                                               CategoryName = category.CategoryName
+                                           }).ToList(),
+                             Direction = new DirectionDto()
+                             {
+                                 Step = recipe.Direction.Step
+                             },
+                             Ingredients = (from integredient in recipe.Ingredients
+                                            select new IngredientDto()
+                                            {
+                                                IngredientName = integredient.IngredientName,
+                                                Amount = new AmountDto()
+                                                {
+                                                    Quantity = integredient.Amount.Quantity,
+                                                    Unit = integredient.Amount.Unit,
+                                                }
+                                            }).ToList()
+                         }).ToList();
 
+            return query;   
+        }
 
-            //             }).ToList();
+        public RecipeDto GetRecipeById(int id)
+        {
+            var result = _unitOfWork.RecipeRepository.Query().Include(x => x.Category).Include(x => x.Direction).Include(x => x.Ingredients).ThenInclude(x => x.Amount).FirstOrDefault(x => x.Id == id);
+            RecipeDto recipeDto = new RecipeDto();
 
+            recipeDto.Title = result.Title;
+
+            recipeDto.Categories = (from category in result.Category
+                                    select new CategoryDto()
+                                    {
+                                        CategoryName = category.CategoryName
+                                    }).ToList();
+
+            recipeDto.Direction = new DirectionDto()
+            {
+                Step = result.Direction.Step
+            };
+
+            recipeDto.Ingredients=(from ingredient in result.Ingredients
+                                   select new IngredientDto() 
+                                   {
+                                        IngredientName=ingredient.IngredientName,
+                                        Amount=new AmountDto()
+                                        {
+                                            Quantity=ingredient.Amount.Quantity,
+                                            Unit=ingredient.Amount.Unit
+                                        }
+                                   }).ToList();
 
             return recipeDto;
         }
@@ -55,6 +97,45 @@ namespace Recipes.Service.Services
             var result=await _unitOfWork.RecipeRepository.AddAsync(NewRecipe);
 
             await _unitOfWork.CommitAsync();
+
+            return result;
+        }
+
+        public Recipe UpdateRecipe(RecipeDto recipeDto)
+        {
+
+            Recipe NewRecipe = new Recipe();
+
+            NewRecipe.Title = recipeDto.Title;
+
+            NewRecipe.Category = (from category in recipeDto.Categories
+                                  select new Category()
+                                  {
+                                      CategoryName = category.CategoryName,
+                                  }).ToList();
+
+            NewRecipe.Ingredients = (from Ingredient in recipeDto.Ingredients
+                                     select new Ingredient()
+                                     {
+                                         IngredientName = Ingredient.IngredientName,
+                                         Amount=new Amount()
+                                         {
+                                             Quantity=Ingredient.Amount.Quantity,
+                                             Unit=Ingredient.Amount.Unit
+                                         }
+
+                                     }).ToList();
+
+            NewRecipe.Direction = new Direction()
+            {
+                Step = recipeDto.Direction.Step
+            };
+
+
+
+            var result = _unitOfWork.RecipeRepository.Update(NewRecipe);
+
+            _unitOfWork.Commit();
 
             return result;
         }

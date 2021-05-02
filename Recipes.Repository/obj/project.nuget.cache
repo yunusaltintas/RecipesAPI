@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PO6ktfVWghIXeB/u4krtx0MHJsWtb251UgTkswo2FH3C+pvN3IzXG/wAIgTRubVkJSwC2CLV8lPPkDLR2iFvxw==",
+  "dgSpecHash": "7QfGz83Tt3Jr1T5CGHd8j3Jcx6j+oHEhgAdP4AdBtotFyO4t37aYhxia+eyki3y2mLQeL/1ZrVH/i8UCTsw+0Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\yunus\\source\\repos\\GİT\\RecipesAPI\\Recipes.Repository\\Recipes.Repository.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yunus\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\yunus\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

@@ -13,7 +13,7 @@ namespace Recipes.Data.DTOs
         }
         public int Result { get; set; }
         public int Total { get; set; }
-        public virtual Recipe Recipe { get; set; }
+        public Recipe Recipe { get; set; }
 
 
     }

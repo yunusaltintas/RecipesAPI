@@ -12,26 +12,7 @@ namespace Recipes.API.Mapping
     {
         public MapProfile()
         {
-            CreateMap<Category, CategoryWithResultCountDto>();
-            CreateMap<CategoryWithResultCountDto, Category>();
 
-            CreateMap<Recipe, RecipeWithCategoryIngredientDto>();
-            CreateMap<RecipeWithCategoryIngredientDto, Recipe>();
-
-            CreateMap<Recipe, RecipeDto>();
-            CreateMap<RecipeDto, Recipe>();
-
-            CreateMap<Amount, AmountDto>();
-            CreateMap<AmountDto, Amount>();
-
-            CreateMap<Direction, DirectionDto>();
-            CreateMap<DirectionDto, Direction>();
-
-            CreateMap<Ingredient, IngredientDto>();
-            CreateMap<IngredientDto, Ingredient>();
-
-            CreateMap<Category, CategoryDto>();
-            CreateMap<CategoryDto, Category>();
         }
     }
 }
