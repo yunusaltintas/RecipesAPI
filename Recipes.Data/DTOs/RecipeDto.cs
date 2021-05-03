@@ -6,6 +6,7 @@ namespace Recipes.Data.DTOs
 {
     public class RecipeDto
     {
+        public int RecipeId { get; set; }
         public string Title { get; set; }
         public List<CategoryDto> Categories { get; set; }
         public List<IngredientDto> Ingredients { get; set; }

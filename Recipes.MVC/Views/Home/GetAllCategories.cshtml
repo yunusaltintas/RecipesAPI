@@ -1,0 +1,50 @@
+﻿@model CategoryWithResultCountDto
+
+@{
+    ViewData["Title"] = "GetAllCategories";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>GetAllCategories</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p><br />
+    <p> result= @Model.ResultsCount</p>
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>
+                    <p> Category Name</p>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Categories)
+            {
+                <tr>
+                    <td>
+                        @item
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+
+
+

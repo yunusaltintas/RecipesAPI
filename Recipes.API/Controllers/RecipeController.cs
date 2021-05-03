@@ -68,10 +68,10 @@ namespace Recipes.API.Controllers
         }
 
         [HttpPut]
-        [Route("/Service/Recipe/All")]
-        public IActionResult Update(RecipeDto recipeDto)
+        [Route("/Service/Recipe/All/{id}")]
+        public IActionResult Update(int id,[FromBody] RecipeDto recipeDto)
         {
-            var result = _recipeService.UpdateRecipe(recipeDto);
+            var result = _recipeService.UpdateRecipeAsync(id,recipeDto).Result;
 
             return Ok(result);
         }

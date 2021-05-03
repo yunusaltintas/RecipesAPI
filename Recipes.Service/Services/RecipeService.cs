@@ -63,24 +63,29 @@ namespace Recipes.Service.Services
             RecipeDto recipeDto = new RecipeDto();
 
             recipeDto.Title = result.Title;
+            recipeDto.RecipeId = result.Id;
 
             recipeDto.Categories = (from category in result.Category
                                     select new CategoryDto()
                                     {
+                                        CategoryId=category.Id,
                                         CategoryName = category.CategoryName
                                     }).ToList();
 
             recipeDto.Direction = new DirectionDto()
             {
+                DirectionId=result.DirectionId,
                 Step = result.Direction.Step
             };
 
             recipeDto.Ingredients=(from ingredient in result.Ingredients
                                    select new IngredientDto() 
                                    {
+                                       IngredientId=ingredient.Id,
                                         IngredientName=ingredient.IngredientName,
                                         Amount=new AmountDto()
                                         {
+                                            AmountId=ingredient.Amount.Id,
                                             Quantity=ingredient.Amount.Quantity,
                                             Unit=ingredient.Amount.Unit
                                         }
@@ -101,10 +106,10 @@ namespace Recipes.Service.Services
             return result;
         }
 
-        public Recipe UpdateRecipe(RecipeDto recipeDto)
+        public async Task<Recipe> UpdateRecipeAsync(int id,RecipeDto recipeDto)
         {
 
-            Recipe NewRecipe = new Recipe();
+            var NewRecipe = await _unitOfWork.RecipeRepository.SingleOrDefaultAsync(x=>x.Id==id);
 
             NewRecipe.Title = recipeDto.Title;
 

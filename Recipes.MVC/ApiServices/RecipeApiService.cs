@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Recipes.Data.DTOs;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,39 +18,65 @@ namespace Recipes.MVC.ApiServices
             _httpClient = httpClient;
         }
 
-        public async Task<CategoryWithResultCountDto> GetAllCategories()
+        public CategoryWithResultCountDto GetAllCategories()
         {
-           CategoryWithResultCountDto categoryDtos=new CategoryWithResultCountDto();
+            var client = new RestClient("http://localhost:50554/Service/");
+            var request = new RestRequest("Recipe/Filter/Categories", Method.GET);
+            var query = client.Execute<CategoryWithResultCountDto>(request);
 
-            var response = await _httpClient.GetAsync("Recipe/Filter/Categories");
+            var categoriesString=JsonConvert.DeserializeObject<CategoryWithResultCountDto>(query.Content);
 
-            if (response.IsSuccessStatusCode)
-            {
-                categoryDtos = JsonConvert.DeserializeObject<CategoryWithResultCountDto>(await response.Content.ReadAsStringAsync());
-            }
-            else
-            {
-                categoryDtos = null;
-            }
-            return categoryDtos;
+            return categoriesString;
         }
 
-        public async Task<RecipesDto> GetAllRecipes()
+        public List<RecipeDto> GetAllRecipes()
         {
-            RecipesDto recipesDto;
 
-            var response = await _httpClient.GetAsync("Recipe/All");
+            var client = new RestClient("http://localhost:50554/Service/");
+            var request = new RestRequest("Recipe/All", Method.GET);
+            var query = client.Execute<RecipeDto>(request);
 
-            if (response.IsSuccessStatusCode)
-            {
-                recipesDto = JsonConvert.DeserializeObject<RecipesDto>(await response.Content.ReadAsStringAsync());
-            }
-            else
-            {
-                recipesDto = null;
-            }
-            return recipesDto;
+            var RepicesString = JsonConvert.DeserializeObject<List<RecipeDto>>(query.Content);
+
+            return RepicesString;
         }
+
+        public RecipeDto GetRecipeById(int id)
+        {
+            var client = new RestClient("http://localhost:50554/Service/");
+            var request = new RestRequest($"Recipe/All/{id}", Method.GET);
+            var query = client.Execute<RecipeDto>(request);
+
+            var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
+
+            return RepicesString;
+        }
+
+        public RecipeDto UpdateRecipe(RecipeDto recipeDto)
+        {
+            var client = new RestClient("http://localhost:50554/Service/");
+            var request = new RestRequest($"Recipe/All{recipeDto.RecipeId}", Method.PUT);
+            var query = client.Execute<RecipeDto>(request);
+
+            var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
+
+            return RepicesString;
+
+
+        }
+        public RecipeDto AddRecipe(RecipeDto recipeDto)
+        {
+            var client = new RestClient("http://localhost:50554/Service/");
+            var request = new RestRequest($"Recipe/All", Method.POST);
+            var query = client.Execute<RecipeDto>(request);
+
+            var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
+
+            return RepicesString;
+
+
+        }
+
 
 
 

@@ -6,6 +6,7 @@ namespace Recipes.Data.DTOs
 {
     public class AmountDto
     {
+        public int AmountId { get; set; }
         public int Quantity { get; set; }
         public string Unit { get; set; }
     }

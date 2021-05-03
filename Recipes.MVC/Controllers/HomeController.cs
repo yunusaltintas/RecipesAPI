@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Recipes.Data.DTOs;
 using Recipes.MVC.ApiServices;
 using System;
 using System.Collections.Generic;
@@ -25,16 +26,46 @@ namespace Recipes.MVC.Controllers
         {
             var categories = _recipeApiService.GetAllCategories();
             
+            return View(categories);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllRecipes()
+        {
+            var recipe = _recipeApiService.GetAllRecipes();
+
+            return View(recipe);
+        }
+
+        [HttpGet]
+        public IActionResult UpdateRecipe(int id)
+        {
+           var recipe= _recipeApiService.GetRecipeById(id);
+
+            return View(recipe);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateRecipe(RecipeDto recipeDto)
+        {
+            _recipeApiService.UpdateRecipe(recipeDto);
+
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllRecipes()
+        public IActionResult AddRecipe()
         {
-            var recipe = await _recipeApiService.GetAllRecipes();
-
             return View();
         }
+        [HttpPost]
+        public IActionResult AddRecipe(RecipeDto recipeDto)
+        {
+            _recipeApiService.AddRecipe(recipeDto);
+            return View();
+        }
+
+
 
 
     }

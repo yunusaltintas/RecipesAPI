@@ -7,7 +7,7 @@ namespace Recipes.Data.DTOs
 {
     public class IngredientDto
     {
-
+        public int IngredientId { get; set; }
         public string IngredientName { get; set; }
 
         public AmountDto Amount { get; set; }

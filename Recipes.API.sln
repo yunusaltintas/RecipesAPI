@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Service", "Recipes.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Repository", "Recipes.Repository\Recipes.Repository.csproj", "{47F69DDA-14F6-4C91-B279-22BF843186F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipes.MVC", "Recipes.MVC\Recipes.MVC.csproj", "{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.MVC", "Recipes.MVC\Recipes.MVC.csproj", "{0769E9CA-357B-4FEA-A098-4FCAAA8C1A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

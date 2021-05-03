@@ -12,6 +12,6 @@ namespace Recipes.Service.IServices
         List<RecipeDto> GetAllRepice();
         Task<Recipe> AddRecipe(RecipesDto recipeDto);
         RecipeDto GetRecipeById(int id);
-        Recipe UpdateRecipe(RecipeDto recipeDto);
+        Task<Recipe> UpdateRecipeAsync(int id, RecipeDto recipeDto);
     }
 }

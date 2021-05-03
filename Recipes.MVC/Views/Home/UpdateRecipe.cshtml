@@ -1,0 +1,70 @@
+﻿@model RecipeDto
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>update recipe</title>
+</head>
+<body>
+
+    <form asp-action="UpdateRecipe" asp-controller="Home" method="post" class="p-4 w-25 mx-auto mt-5 shadow container">
+
+        <div class="form-group">
+            <label asp-for="@Model.RecipeId">RecipeId</label>
+            <input asp-for="@Model.RecipeId" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Title">Title</label>
+            <input asp-for="@Model.Title" type="text" class="form-control" />
+        </div>
+
+        @foreach (var Category in Model.Categories)
+        {
+            <div class="form-group">
+                <label asp-for="@Category.CategoryId">CategoryId</label>
+                <input asp-for="@Category.CategoryId" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Category.CategoryName">CategoryName</label>
+                <input asp-for="@Category.CategoryName" type="text" class="form-control" />
+            </div>
+        }
+
+        @foreach (var Ingredient in Model.Ingredients)
+        {
+            <div class="form-group">
+                <label asp-for="@Ingredient.IngredientId">IngredientId</label>
+                <input asp-for="@Ingredient.IngredientId" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Ingredient.IngredientName">IngredientName</label>
+                <input asp-for="@Ingredient.IngredientName" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Ingredient.Amount.AmountId">AmountId</label>
+                <input asp-for="@Ingredient.Amount.AmountId" type="text" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Ingredient.Amount.Quantity">Quantity</label>
+                <input asp-for="@Ingredient.Amount.Quantity" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Ingredient.Amount.Unit">Unit</label>
+                <input asp-for="@Ingredient.Amount.Unit" type="text" class="form-control" />
+            </div>
+
+        }
+
+        <div class="form-group">
+            <label asp-for="@Model.Direction.Step">Step</label>
+            <input asp-for="@Model.Direction.Step" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-block btn-info">Update</button>
+        </div>
+
+    </form>
+</body>
+</html>
