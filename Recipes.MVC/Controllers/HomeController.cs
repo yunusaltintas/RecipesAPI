@@ -58,6 +58,7 @@ namespace Recipes.MVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult AddRecipe(RecipeDto recipeDto)
         {

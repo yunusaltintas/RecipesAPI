@@ -12,24 +12,26 @@
         <div class="form-group">
             <label asp-for="@Model.Title">Title</label>
             <input asp-for="@Model.Title" type="text" class="form-control" />
+            <span asp-validation-for="@Model.Title"></span>
         </div>
-
-
 
         <div class="form-group">
             <label asp-for="@Model.Categories ">CategoryName</label>
             <input asp-for="@Model.Categories" type="text" class="form-control" />
+            <span asp-validation-for="@Model.Categories"></span>
         </div>
 
 
         <div class="form-group">
             <label asp-for="@Model.Ingredients">IngredientName</label>
             <input asp-for="@Model.Ingredients" type="text" class="form-control" />
+            <span asp-validation-for="@Model.Ingredients"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="@Model.Direction.Step">Step</label>
             <input asp-for="@Model.Direction.Step" type="text" class="form-control" />
+            <span asp-validation-for="@Model.Direction.Step"></span>
         </div>
 
         <div class="form-group">

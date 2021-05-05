@@ -12,7 +12,6 @@ namespace Recipes.MVC.ApiServices
     public class RecipeApiService
     {
         private readonly HttpClient _httpClient;
-
         public RecipeApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -20,8 +19,8 @@ namespace Recipes.MVC.ApiServices
 
         public CategoryWithResultCountDto GetAllCategories()
         {
-            var client = new RestClient("http://localhost:50554/Service/");
-            var request = new RestRequest("Recipe/Filter/Categories", Method.GET);
+            var client = new RestClient(UrlType.BaseUrl);
+            var request = new RestRequest(UrlType.CategoreiesOfRecipe, Method.GET);
             var query = client.Execute<CategoryWithResultCountDto>(request);
 
             var categoriesString=JsonConvert.DeserializeObject<CategoryWithResultCountDto>(query.Content);
@@ -32,8 +31,8 @@ namespace Recipes.MVC.ApiServices
         public List<RecipeDto> GetAllRecipes()
         {
 
-            var client = new RestClient("http://localhost:50554/Service/");
-            var request = new RestRequest("Recipe/All", Method.GET);
+            var client = new RestClient(UrlType.BaseUrl);
+            var request = new RestRequest(UrlType.RecipeAll, Method.GET);
             var query = client.Execute<RecipeDto>(request);
 
             var RepicesString = JsonConvert.DeserializeObject<List<RecipeDto>>(query.Content);
@@ -43,8 +42,8 @@ namespace Recipes.MVC.ApiServices
 
         public RecipeDto GetRecipeById(int id)
         {
-            var client = new RestClient("http://localhost:50554/Service/");
-            var request = new RestRequest($"Recipe/All/{id}", Method.GET);
+            var client = new RestClient(UrlType.BaseUrl);
+            var request = new RestRequest(string.Format(UrlType.RecipeById, id), Method.GET);
             var query = client.Execute<RecipeDto>(request);
 
             var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
@@ -54,8 +53,8 @@ namespace Recipes.MVC.ApiServices
 
         public RecipeDto UpdateRecipe(RecipeDto recipeDto)
         {
-            var client = new RestClient("http://localhost:50554/Service/");
-            var request = new RestRequest($"Recipe/All{recipeDto.RecipeId}", Method.PUT);
+            var client = new RestClient(UrlType.BaseUrl);
+            var request = new RestRequest(string.Format(UrlType.RecipeById,recipeDto.RecipeId), Method.PUT);
             var query = client.Execute<RecipeDto>(request);
 
             var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
@@ -66,8 +65,8 @@ namespace Recipes.MVC.ApiServices
         }
         public RecipeDto AddRecipe(RecipeDto recipeDto)
         {
-            var client = new RestClient("http://localhost:50554/Service/");
-            var request = new RestRequest($"Recipe/All", Method.POST);
+            var client = new RestClient(UrlType.BaseUrl);
+            var request = new RestRequest(UrlType.RecipeAll, Method.POST);
             var query = client.Execute<RecipeDto>(request);
 
             var RepicesString = JsonConvert.DeserializeObject<RecipeDto>(query.Content);
@@ -76,11 +75,6 @@ namespace Recipes.MVC.ApiServices
 
 
         }
-
-
-
-
-
 
     }
 }

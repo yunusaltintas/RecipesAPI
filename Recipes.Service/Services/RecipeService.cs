@@ -110,7 +110,7 @@ namespace Recipes.Service.Services
         {
 
             var NewRecipe = await _unitOfWork.RecipeRepository.SingleOrDefaultAsync(x=>x.Id==id);
-
+  
             NewRecipe.Title = recipeDto.Title;
 
             NewRecipe.Category = (from category in recipeDto.Categories

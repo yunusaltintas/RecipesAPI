@@ -10,33 +10,38 @@
     <title></title>
 </head>
 <body>
+    
     <h1>GetAllCategories</h1>
 
     <p>
         <a asp-action="Create">Create New</a>
     </p><br />
+        <div class="container">
+            @foreach (var item in @Model)
+            {
+                <h4>@item.Title</h4><br />
+                <h5>Categories:</h5>
+                @foreach (var category in item.Categories)
+                {
+                    <p>@category.CategoryName</p>
+                }
 
-    @foreach (var item in @Model)
-    {
-        <h4>@item.Title</h4><br />
-        <h5>Categories:</h5>
-        @foreach (var category in item.Categories)
-        {
-            <p>@category.CategoryName</p>
-        }
+                <h5>Ingredients:</h5>
+                @foreach (var Ingredient in item.Ingredients)
+                {
+                    <p>IngredientName: @Ingredient.IngredientName</p>
+                    <p>Quantity: @Ingredient.Amount.Quantity, Unit: @Ingredient.Amount.Unit</p>
+                }
 
-        <h5>Ingredients:</h5>
-        @foreach (var Ingredient in item.Ingredients)
-        {
-            <p>IngredientName: @Ingredient.IngredientName</p>
-            <p>Quantity: @Ingredient.Amount.Quantity, Unit: @Ingredient.Amount.Unit</p>
-        }
+                <p>Direction:@item.Direction.Step</p>
 
-        <p>Direction:@item.Direction.Step</p>
+                <br /><br />
+            }
 
-        <br /><br />
-    }
 
+        </div>
+
+    
 
 
 </body>
