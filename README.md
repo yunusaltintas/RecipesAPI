@@ -1,6 +1,6 @@
 # RecipesAPI
 
-Yemek tarifleri toplayan ve yayınlayan bir uygulamanın back-end RestApi servici ve MVC uygulaması yazılmıştır.
+Yemek tarifleri toplayan ve yayınlayan bir uygulamanın back-end RestApi servisi ve MVC uygulaması yazılmıştır.
 
 Kullanılan Teknolojiler:
 
