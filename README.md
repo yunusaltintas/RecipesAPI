@@ -11,6 +11,7 @@ Kullanılan Teknolojiler:
 * Çok Katmanlı Yazılım Mimarisi
 * Dependency Injection
 * Unit Of Work
+* Entity FrameWork Code-First
 * Fluent Validation
 * Auto Mapper
 * Boostrap
